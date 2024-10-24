@@ -8,6 +8,7 @@ const fifthSlotEl = document.getElementById('fifth-slot');
 const submitButtonEl = document.getElementById('submit-button');
 const resultEl = document.getElementById('result');
 const instructionsEl = document.getElementById('instructions');
+const formEl = document.getElementById('form');
 let numbers = [];
 let userNumbers = [];
 let countdown;
@@ -15,6 +16,7 @@ let currentNumber;
 
 // - Game start function
 const gameStart = () => {
+	formEl.reset();
 	firstSlotEl.classList.remove('text-bg-success');
 	secondSlotEl.classList.remove('text-bg-success');
 	thirdSlotEl.classList.remove('text-bg-success');
@@ -111,21 +113,13 @@ submitButtonEl.addEventListener('click', () => {
 	}
 });
 
-console.log(submitButtonEl.textContent);
-
 const gameCheck = () => {
 	countdownEl.innerText = 'Vuoi la rivincita?';
 	instructionsEl.innerText = 'Risultato:';
 
 	submitButtonEl.innerText = 'Riavvia gioco';
-	submitButtonEl.setAttribute('type', 'reset');
 
 	let points = 0;
-	userNumbers.push(parseInt(firstSlotEl.value));
-	userNumbers.push(parseInt(secondSlotEl.value));
-	userNumbers.push(parseInt(thirdSlotEl.value));
-	userNumbers.push(parseInt(fourthSlotEl.value));
-	userNumbers.push(parseInt(fifthSlotEl.value));
 	firstSlotEl.readOnly = true;
 	secondSlotEl.readOnly = true;
 	thirdSlotEl.readOnly = true;
@@ -134,53 +128,56 @@ const gameCheck = () => {
 
 	console.log(userNumbers, numbers);
 
-	for (i = 0; i < userNumbers.length; i++) {
-		if (numbers.includes(userNumbers[i])) {
-			points++;
-			console.log(userNumbers[i]);
+	if (numbers.includes(parseInt(firstSlotEl.value))) {
+		firstSlotEl.classList.add('text-bg-success');
+		const index = numbers.indexOf(parseInt(firstSlotEl.value));
+		if (index > -1) {
+			numbers.splice(index, 1);
 		}
-	}
-	if (points === 0) {
+		points++;
+		console.log(numbers);
+	} else {
 		firstSlotEl.classList.add('text-bg-danger');
+	}
+	if (numbers.includes(parseInt(secondSlotEl.value))) {
+		secondSlotEl.classList.add('text-bg-success');
+		const index = numbers.indexOf(parseInt(secondSlotEl.value));
+		if (index > -1) {
+			numbers.splice(index, 1);
+		}
+		points++;
+	} else {
 		secondSlotEl.classList.add('text-bg-danger');
-		thirdSlotEl.classList.add('text-bg-danger');
-		fourthSlotEl.classList.add('text-bg-danger');
-		fifthSlotEl.classList.add('text-bg-danger');
 	}
-	if (points === 1) {
-		firstSlotEl.classList.add('text-bg-success');
-		secondSlotEl.classList.add('text-bg-danger');
-		thirdSlotEl.classList.add('text-bg-danger');
-		fourthSlotEl.classList.add('text-bg-danger');
-		fifthSlotEl.classList.add('text-bg-danger');
-	}
-	if (points === 2) {
-		firstSlotEl.classList.add('text-bg-success');
-		secondSlotEl.classList.add('text-bg-success');
-		thirdSlotEl.classList.add('text-bg-danger');
-		fourthSlotEl.classList.add('text-bg-danger');
-		fifthSlotEl.classList.add('text-bg-danger');
-	}
-	if (points === 3) {
-		firstSlotEl.classList.add('text-bg-success');
-		secondSlotEl.classList.add('text-bg-success');
+	if (numbers.includes(parseInt(thirdSlotEl.value))) {
 		thirdSlotEl.classList.add('text-bg-success');
-		fourthSlotEl.classList.add('text-bg-danger');
-		fifthSlotEl.classList.add('text-bg-danger');
+		const index = numbers.indexOf(parseInt(thirdSlotEl.value));
+		if (index > -1) {
+			numbers.splice(index, 1);
+		}
+		points++;
+	} else {
+		thirdSlotEl.classList.add('text-bg-danger');
 	}
-	if (points === 4) {
-		firstSlotEl.classList.add('text-bg-success');
-		secondSlotEl.classList.add('text-bg-success');
-		thirdSlotEl.classList.add('text-bg-success');
+	if (numbers.includes(parseInt(fourthSlotEl.value))) {
 		fourthSlotEl.classList.add('text-bg-success');
-		fifthSlotEl.classList.add('text-bg-danger');
+		const index = numbers.indexOf(parseInt(fourthSlotEl.value));
+		if (index > -1) {
+			numbers.splice(index, 1);
+		}
+		points++;
+	} else {
+		fourthSlotEl.classList.add('text-bg-danger');
 	}
-	if (points === 5) {
-		firstSlotEl.classList.add('text-bg-success');
-		secondSlotEl.classList.add('text-bg-success');
-		thirdSlotEl.classList.add('text-bg-success');
-		fourthSlotEl.classList.add('text-bg-success');
+	if (numbers.includes(parseInt(fifthSlotEl.value))) {
 		fifthSlotEl.classList.add('text-bg-success');
+		const index = numbers.indexOf(parseInt(fifthSlotEl.value));
+		if (index > -1) {
+			numbers.splice(index, 1);
+		}
+		points++;
+	} else {
+		fifthSlotEl.classList.add('text-bg-danger');
 	}
 
 	console.log(points);
