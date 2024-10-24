@@ -33,7 +33,7 @@ const gameStart = () => {
 	instructionsEl.innerText = "Memorizza i numeri (l'ordine non è importante)";
 
 	submitButtonEl.setAttribute('type', 'button');
-	countdown = 5;
+	countdown = 30;
 	countdownEl.innerText = countdown;
 	numbers = [];
 	userNumbers = [];
