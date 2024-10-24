@@ -27,7 +27,36 @@
 	</head>
 
 	<body>
-		<div class="container py-5"></div>
+		<div class="container py-5">
+			<div class="card text-bg-primary text-center py-5">
+				<h1 id="countdown" class="mb-4">0</h1>
+				<span class="h5 mb-4">Indovina i numeri</span>
+
+				<!-- - INPUT ROW -->
+				<div class="row justify-content-center">
+					<div class="col-2">
+						<input class="form-control text-center" type="number" min="1" max="99" id="first-slot" readonly value="5" />
+					</div>
+					<div class="col-2">
+						<input class="form-control text-center" type="number" min="1" max="99" id="second-slot" readonly />
+					</div>
+					<div class="col-2">
+						<input class="form-control text-center" type="number" min="1" max="99" id="third-slot" readonly />
+					</div>
+					<div class="col-2">
+						<input class="form-control text-center" type="number" min="1" max="99" id="fourth-slot" readonly />
+					</div>
+					<div class="col-2">
+						<input class="form-control text-center" type="number" min="1" max="99" id="fifth-slot" readonly />
+					</div>
+				</div>
+
+				<!-- - BUTTON -->
+				<div class="row justify-content-center mt-5 d-none">
+					<button class="btn btn-light w-25">Invia</button>
+				</div>
+			</div>
+		</div>
 
 		<!-- - BOOTSTRAP JS -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
